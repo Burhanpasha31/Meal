@@ -37,7 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
     'Orders'
+=======
+    "rest_framework",
+    "payment",
+>>>>>>> dbb301ba38f95dea1a81f44abc70e7c34985175f
 ]
 
 MIDDLEWARE = [
