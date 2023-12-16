@@ -24,7 +24,7 @@ class Transaction(models.Model):
     payment = models.ForeignKey('Payment', on_delete=models.CASCADE)
     billing = models.ForeignKey('Billing', on_delete=models.CASCADE)
     success = models.BooleanField(default=False)
-    response_data = models.JSONField()  # Store response data from payment gateway
+    # response_data = models.JSONField()  # Store response data from payment gateway
 
     # Other fields related to transaction details can be added here
 
