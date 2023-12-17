@@ -1,6 +1,6 @@
 from django.db import models
 import uuid
-from payment.models import Payment
+from payment.models import Payment,Billing
 
 # Create your models here.
 
@@ -34,7 +34,7 @@ class Orders(models.Model):
         self.calculate_total_amount()
         super().save(*args, **kwargs)
     
-    # Payment_status= import from billing model
+    Payment_status= Billing.is_paid
 
     def __str__(self):
         return str(self.Order_ID)
