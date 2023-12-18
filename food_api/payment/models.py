@@ -1,9 +1,9 @@
 from django.db import models
-
+from account.models import MyUser
 # Create your models here.
 
 class Payment(models.Model):
-    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    user = models.ForeignKey(MyUser, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     payment_method = models.CharField(max_length=50)  # To store payment method (e.g., PayTm, UPI, Cards, Netbanking)
     timestamp = models.DateTimeField(auto_now_add=True)
@@ -12,7 +12,7 @@ class Payment(models.Model):
     
     
 class Billing(models.Model):
-    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    user = models.ForeignKey(MyUser, on_delete=models.CASCADE)
     amount_due = models.DecimalField(max_digits=10, decimal_places=2)
     timestamp = models.DateTimeField(auto_now_add=True)
     is_paid = models.BooleanField(default=False)

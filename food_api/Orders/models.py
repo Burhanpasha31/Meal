@@ -1,11 +1,12 @@
 from django.db import models
 import uuid
 from payment.models import Payment,Billing
+from account.models import MyUser
 
 # Create your models here.
 
 class Address(models.Model):
-    customer_id =models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    customer_id =models.ForeignKey( MyUser, on_delete=models.CASCADE)
     street_address = models.CharField(max_length=255)
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=50)
