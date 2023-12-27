@@ -1,11 +1,12 @@
 from django.db import models
 import uuid
-from payment.models import Payment
+from payment.models import Payment,Billing
+from account.models import MyUser
 
 # Create your models here.
 
 class Address(models.Model):
-    customer_id =models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    customer_id =models.ForeignKey( MyUser, on_delete=models.CASCADE)
     street_address = models.CharField(max_length=255)
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=50)
@@ -34,7 +35,7 @@ class Orders(models.Model):
         self.calculate_total_amount()
         super().save(*args, **kwargs)
     
-    # Payment_status= import from billing model
+    Payment_status= Billing.is_paid
 
     def __str__(self):
         return str(self.Order_ID)
